@@ -1,0 +1,46 @@
+.techs {
+  background-color: #f5f5f5;
+  width: 100%;
+  padding: 100px 0;
+}
+
+.techs__inner {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.techs__title {
+  text-align: center;
+  font-size: 50px;
+  font-weight: 400;
+  margin-top: 90px;
+}
+
+.techs__paragraph {
+  margin: 26px auto 0;
+  font-size: 14px;
+  max-width: 460px;
+  text-align: center;
+}
+
+.techs__list {
+  padding-inline-start: 0;
+  display: flex;
+  list-style: none;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 105px;
+}
+
+.techs__item {
+  width: 90px;
+  background-color: #e8e8e8;
+  border-radius: 10px;
+  margin: 0 5px;
+  font-size: 14px;
+  text-align: center;
+  padding: 20px 0;
+}
