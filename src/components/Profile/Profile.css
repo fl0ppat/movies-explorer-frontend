@@ -1,26 +1,75 @@
 .profile {
   font-size: 14px;
   font-weight: 600;
+  max-width: 410px;
   cursor: pointer;
+  margin: auto;
   display: flex;
+  flex-direction: column;
+  align-items: stretch;
   align-content: center;
   flex-wrap: nowrap;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 2px solid rgba(0, 0, 0, 0);
+  padding-top: 100px;
 }
 
-.profile:hover {
-  border-bottom: 2px solid black;
+.profile__title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0;
 }
 
-.profile__pic {
-  margin-left: 24.25px;
-  padding: 5px;
+.profile__form {
+  margin-top: 110px;
 }
 
-.profile {
-  color: black;
-  text-decoration: none;
+.profile__fieldset {
+  padding: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__input {
+  text-align: right;
+  border: 0;
+  outline: 0;
+  width: inherit;
+  max-width: 350px;
+  float: right;
+}
+
+.profile__field {
+  max-width: 410px;
+  width: 100%;
+  padding: 15px 0;
+}
+
+.profile__fieldset > .profile__field:first-child {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.profile__input:focus .profile__label {
+  opacity: 0.5;
+}
+
+.profile__submit {
+  display: block;
+  margin-top: 200px;
+  max-width: 105px;
+  width: 100%;
+  border: 0;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0);
+  margin: 200px auto 0;
+}
+
+.profile__signout {
+  background-color: rgba(0, 0, 0, 0);
+  outline: 0;
+  border: 0;
+  color: #ff4062;
+  margin-top: 16px;
 }

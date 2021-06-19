@@ -1,0 +1,77 @@
+.header {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1140px;
+  margin: 20px auto;
+  max-height: 74px;
+  height: 100%;
+}
+
+.header__logo {
+  transition: transform 0.3s ease-in-out;
+}
+
+.header__logo:hover {
+  transform: scale(1.07);
+}
+
+.header__signup {
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: 500;
+  margin-right: 30px;
+  color: black;
+  letter-spacing: 0px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0);
+}
+
+.header__signup:hover {
+  border-bottom: 2px solid black;
+}
+
+.header__signin {
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 20px;
+  color: white;
+  background-color: black;
+  border-radius: 3px;
+  letter-spacing: 0px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.header__signin:hover {
+  background-color: #4c4c4c;
+}
+
+.header__profile {
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid rgba(0, 0, 0, 0);
+}
+
+.header__profile:hover {
+  border-bottom: 2px solid black;
+}
+
+.header__pic {
+  margin-left: 24.25px;
+  padding: 5px;
+}
+
+.header__profile {
+  color: black;
+  text-decoration: none;
+}

@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import "./Movie.css";
 
 function Movie(props) {
-  // eslint-disable-next-line react/prop-types
   const { cover, title, like, duration } = props.film;
 
   function calculateDuration(min) {
@@ -14,8 +14,11 @@ function Movie(props) {
     <div className='movie'>
       <img className='movie__cover' src={cover} alt={`Обложка ${title}`} />
       <p className='movie__title'>{title}</p>
-      <button className={`movie__like ${like ? "movie__like_liked" : ""}`} />
-      {like}
+      {props.mode === "delete" ? (
+        <button className='movie__button movie__button_delete' />
+      ) : (
+        <button className={`movie__button movie__button_like ${like ? "movie__button_liked" : ""}`} />
+      )}
       <p className='movie__duration'>{calculateDuration(duration)}</p>
     </div>
   );

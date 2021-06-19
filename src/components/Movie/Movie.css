@@ -24,25 +24,38 @@
   max-width: 290px;
 }
 
-.movie__like {
+.movie__button {
   float: right;
   width: 14px;
   height: 12px;
   border: 0;
   background-color: rgba(0, 0, 0, 0);
-  background-image: url("../../images/heart.svg");
   margin-right: 24px;
   position: relative;
   top: -12px;
   transition: filter 0.2s ease-in-out;
 }
 
-.movie__like_liked {
+.movie__button_delete {
+  background-image: url("../../images/cross.svg");
+  background-repeat: no-repeat;
+  visibility: hidden;
+}
+
+.movie__button_like {
+  background-image: url("../../images/heart.svg");
+}
+
+.movie__button_liked {
   background: url("../../images/heart-filled.svg") no-repeat center;
 }
 
-.movie__like:hover {
+.movie__button:hover {
   filter: contrast(0%);
+}
+
+.movie:hover .movie__button_delete {
+  visibility: visible;
 }
 
 .movie__duration {

@@ -1,6 +1,6 @@
 .about-project {
   max-width: 1140px;
-  width: 100%;
+  width: calc(100vw - 80px);
   margin: 112px 0 100px;
 }
 
