@@ -1,0 +1,120 @@
+#menu__toggle {
+  display: none;
+}
+
+#menu__toggle:checked ~ .menu__btn > span {
+  transform: rotate(45deg);
+}
+#menu__toggle:checked ~ .menu__btn {
+  position: fixed;
+  top: 30px;
+  right: 50px;
+}
+#menu__toggle:checked ~ .menu__btn > span::before {
+  top: 0;
+  transform: rotate(0);
+}
+#menu__toggle:checked ~ .menu__btn > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+#menu__toggle:checked ~ .menu__box {
+  visibility: visible;
+  right: 0;
+}
+#menu__toggle:checked ~ .menu__overlay {
+  display: block;
+}
+
+.menu__btn {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  width: 26px;
+  height: 26px;
+
+  cursor: pointer;
+  z-index: 10;
+}
+
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: black;
+  transition-duration: 0.25s;
+}
+.menu__btn > span::before {
+  content: "";
+  top: -8px;
+}
+.menu__btn > span::after {
+  content: "";
+  top: 8px;
+}
+
+.menu__box {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  visibility: hidden;
+  top: 0;
+  right: -100%;
+  width: 75vw;
+  height: 100%;
+  margin: 0;
+  padding: 160px 0;
+  list-style: none;
+  background-color: white;
+  transition-duration: 0.2s;
+  z-index: 9;
+}
+
+.menu__box :nth-child(4) {
+  position: fixed;
+  bottom: 92px;
+}
+
+.menu__overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 8;
+}
+
+.menu__item {
+  display: block;
+  padding: 12px 24px;
+  color: black;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  transition-duration: 0.3s;
+  text-align: center;
+  border-bottom: 2px solid transparent;
+}
+
+.menu__item:hover {
+  border-bottom: 2px solid black;
+}
+
+@media screen and (max-width: 380px) {
+  .menu__box {
+    width: 100%;
+  }
+
+  .menu__box :nth-child(4) {
+    bottom: 40px;
+  }
+}
