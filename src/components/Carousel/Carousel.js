@@ -5,15 +5,9 @@ function Carousel() {
     <section className='carousel'>
       <h1 className='carousel__title'>Учебный проект студента факультета Веб-разработки.</h1>
       <ul className='carousel__link-list'>
-        <li className='carousel__item'>
-          <a>О проекте</a>
-        </li>
-        <li className='carousel__item'>
-          <a>Технологии</a>
-        </li>
-        <li className='carousel__item'>
-          <a>Студент</a>
-        </li>
+        <li className='carousel__item'>О проекте</li>
+        <li className='carousel__item'>Технологии</li>
+        <li className='carousel__item'>Студент</li>
       </ul>
     </section>
   );

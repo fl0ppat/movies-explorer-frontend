@@ -17,10 +17,14 @@ function AboutMe() {
         </p>
         <ul className='about-me__social-links'>
           <li className='about-me__social-link'>
-            <a>Facebook</a>
+            <a href='https://ru-ru.facebook.com/zuck' rel='noreferrer' target='_blank'>
+              Facebook
+            </a>
           </li>
           <li className='about-me__social-link'>
-            <a>Github</a>
+            <a href='https://github.com/torvalds' rel='noreferrer' target='_blank'>
+              Github
+            </a>
           </li>
         </ul>
       </div>
@@ -29,13 +33,19 @@ function AboutMe() {
         <h4 className='about-me__portfolio-title'>Портфолио</h4>
         <ul className='about-me__portfolio-links'>
           <li className='about-me__portfolio-link'>
-            <a>Статичный сайт</a>
+            <a href='https://github.com/fl0ppat/how-to-learn' rel='noreferrer' target='_blank'>
+              Статичный сайт
+            </a>
           </li>
           <li className='about-me__portfolio-link'>
-            <a>Адаптивный сайт</a>
+            <a href='https://fl0ppat.github.io/russian-travel/' rel='noreferrer' target='_blank'>
+              Адаптивный сайт
+            </a>
           </li>
           <li className='about-me__portfolio-link'>
-            <a>Одностраничное приложение</a>
+            <a href='https://github.com/fl0ppat/react-mesto-api-full' rel='noreferrer' target='_blank'>
+              Одностраничное приложение
+            </a>
           </li>
         </ul>
       </div>
