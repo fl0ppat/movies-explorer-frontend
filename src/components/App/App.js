@@ -23,7 +23,7 @@ function App() {
   }
 
   useEffect(() => {
-    debugUserSet(null);
+    debugUserSet(1);
   }, []);
 
   return (

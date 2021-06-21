@@ -61,7 +61,7 @@
   border: 0;
   color: white;
   border-radius: 3px;
-  padding: 14px 125px;
+  padding: 14px 77px;
   margin: 136px auto 0;
   display: block;
 }
@@ -80,4 +80,15 @@
 
 .signin__submit {
   margin-top: 206px;
+}
+
+@media screen and (max-width: 450px) {
+  .signform {
+    max-width: calc(100% - 40px);
+  }
+
+  .signform__form {
+    max-width: 100%;
+    margin: auto;
+  }
 }

@@ -11,7 +11,7 @@ function MoviesList(props) {
           <Movie mode={props.mode} key={i} film={film} />
         ))}
       </section>
-      <button className='movies-list__loadmore'>Ещё</button>
+      {props.more && <button className='movies-list__loadmore'>Ещё</button>}
     </>
   );
 }

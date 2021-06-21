@@ -1,5 +1,5 @@
 .footer {
-  width: 100%;
+  width: calc(100vw - 100px);
   margin: auto;
   bottom: 0;
   display: flex;
@@ -55,4 +55,41 @@
 
 .footer__date {
   letter-spacing: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    width: calc(100vw - 46px);
+  }
+
+  .footer__annotation {
+    margin-top: 49px;
+  }
+}
+@media screen and (max-width: 380px) {
+  .footer {
+    width: calc(100vw - 10px);
+  }
+  .footer__row {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding-top: 18px;
+    padding-bottom: 0;
+  }
+  .footer__date {
+    color: #a0a0a0;
+    padding-top: 30px;
+  }
+  .footer__links {
+    text-align: center;
+    flex-direction: column;
+  }
+  .footer__link {
+    padding-top: 10px;
+    margin-left: 0;
+  }
+  .footer__annotation {
+    font-size: 12px;
+    letter-spacing: -0.5px;
+  }
 }

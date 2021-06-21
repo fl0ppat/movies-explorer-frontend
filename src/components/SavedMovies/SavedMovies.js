@@ -32,7 +32,7 @@ function SavedMovies() {
   return (
     <>
       <Search />
-      <MoviesList movies={testData} mode='delete' />
+      <MoviesList movies={testData} more={false} mode='delete' />
     </>
   );
 }

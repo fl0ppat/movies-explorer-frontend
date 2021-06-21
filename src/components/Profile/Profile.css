@@ -73,3 +73,13 @@
   color: #ff4062;
   margin-top: 16px;
 }
+
+@media screen and (max-width: 450px) {
+  .profile {
+    max-width: calc(100% - 40px);
+  }
+
+  .profile__input {
+    max-width: calc(100% - 19vw);
+  }
+}

@@ -1,7 +1,7 @@
 .carousel {
   background-color: #f5f5f5;
   max-width: 1200px;
-  width: 100%;
+  width: calc(100vw - 40px);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -21,11 +21,11 @@
 .carousel__title {
   font-size: 50px;
   max-width: 730px;
-  letter-spacing: -4%;
+  letter-spacing: -2px;
   line-height: 58px;
   text-align: center;
   font-weight: 400;
-  margin-top: 160px;
+  margin: 160px 120px 0;
 }
 
 .carousel__item {
@@ -44,4 +44,55 @@
   color: #2f2f2f;
   transition: all 0.3s ease-in-out;
   transition-property: background-color, color;
+}
+
+@media screen and (max-width: 768px) {
+  .carousel {
+    margin-top: 32px;
+  }
+
+  .carousel__title {
+    font-size: 40px;
+    margin: 348px 36px 162px;
+    letter-spacing: -1.6px;
+    line-height: 54px;
+  }
+
+  .carousel__item {
+    padding: 10px 22px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .carousel__title {
+    margin: 160px 20px 0;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .carousel__title {
+    font-size: 29px;
+    margin: 160px 10px 0;
+  }
+
+  .carousel__item {
+    font-size: 10px;
+    padding: 10px 15px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .carousel__title {
+    font-size: 29px;
+    margin: 212px 0px 0;
+    line-height: 38px;
+  }
+
+  .carousel__link-list {
+    margin: 211px 0 15px;
+  }
+
+  .carousel__item {
+    padding: 7px 15px;
+  }
 }
