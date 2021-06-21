@@ -30,6 +30,11 @@
   text-indent: 63px;
   color: #a0a0a0;
   background: url("../../images/search.svg") no-repeat scroll 25px center;
+  transition: background-position 0.3s;
+}
+
+.search__input:focus {
+  background-position: 35px;
 }
 
 .search__submit {

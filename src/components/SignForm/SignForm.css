@@ -42,6 +42,10 @@
   border-bottom: 1px solid #e8e8e8;
 }
 
+.signform__input:focus {
+  border-bottom-color: black;
+}
+
 .signform__input_invalid {
   color: #ff4062;
   border-color: #ff4062;
@@ -64,6 +68,7 @@
   padding: 14px 77px;
   margin: 136px auto 0;
   display: block;
+  transition: opacity 0.3s;
 }
 
 .signform__link {
@@ -72,6 +77,11 @@
   align-self: center;
   margin-top: 16px;
   font-size: 14px;
+  border-bottom: 2px solid transparent;
+}
+
+.signform__link:hover {
+  border-bottom-color: black;
 }
 
 .signform__link-accent {
@@ -80,6 +90,10 @@
 
 .signin__submit {
   margin-top: 206px;
+}
+
+.signform__submit:hover {
+  opacity: 0.9;
 }
 
 @media screen and (max-width: 450px) {

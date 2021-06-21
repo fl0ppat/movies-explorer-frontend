@@ -12,13 +12,16 @@ function Navigation() {
   return (
     <nav className='navigation'>
       <ul className='navigation__list'>
-        <li className='navigation__item'>
+        <li>
           <Link className={`navigation__item ${curRoute === "/movies" && "navigation__item_selected"}`} to='/movies'>
             Фильмы
           </Link>
         </li>
-        <li className={`navigation__item ${curRoute === "/saved-movies" && "navigation__item_selected"}`}>
-          <Link className='navigation__link' to='/saved-movies'>
+        <li>
+          <Link
+            className={`navigation__item ${curRoute === "/saved-movies" && "navigation__item_selected"}`}
+            to='/saved-movies'
+          >
             Сохранённые фильмы
           </Link>
         </li>

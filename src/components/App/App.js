@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Switch, HashRouter } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
@@ -29,7 +29,7 @@ function App() {
   return (
     <UserContext.Provider value={currentUser}>
       <div className='App'>
-        <BrowserRouter>
+        <HashRouter basename='/'>
           <Header />
 
           <Switch>
@@ -56,7 +56,7 @@ function App() {
             </Route>
           </Switch>
           <Footer />
-        </BrowserRouter>
+        </HashRouter>
       </div>
     </UserContext.Provider>
   );
