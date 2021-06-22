@@ -97,6 +97,16 @@
   letter-spacing: 0px;
 }
 
+.about-me__social-link a {
+  color: black;
+  text-decoration: none;
+}
+
+.about-me__portfolio-link a {
+  color: black;
+  text-decoration: none;
+}
+
 .about-me__social-link:hover {
   border-bottom: 2px solid black;
 }
