@@ -1,0 +1,103 @@
+.profile {
+  font-size: 14px;
+  font-weight: 600;
+  max-width: 410px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: center;
+  flex-wrap: nowrap;
+  padding-top: 100px;
+}
+
+.profile__title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.profile__form {
+  margin-top: 110px;
+}
+
+.profile__fieldset {
+  padding: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__input {
+  text-align: right;
+  border: 0;
+  outline: 0;
+  width: inherit;
+  max-width: 350px;
+  float: right;
+  transition: 0.3s;
+}
+
+.profile__input:focus {
+  font-weight: 600;
+}
+
+.profile__field {
+  max-width: 410px;
+  width: 100%;
+  padding: 15px 0;
+}
+
+.profile__fieldset > .profile__field:first-child {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.profile__input:focus .profile__label {
+  opacity: 0.5;
+}
+
+.profile__submit {
+  display: block;
+  margin-top: 200px;
+  max-width: 92px;
+  width: 100%;
+  border: 0;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0);
+  margin: 200px auto 0;
+  padding: 0;
+  border-bottom: 2px solid transparent;
+}
+
+.profile__submit:hover {
+  border-bottom-color: black;
+}
+
+.profile__signout {
+  background-color: rgba(0, 0, 0, 0);
+  outline: 0;
+  border: 0;
+  color: #ff4062;
+  margin-top: 16px;
+  border-bottom: 2px solid transparent;
+  margin: 16px auto;
+  max-width: 128px;
+  padding: 0;
+}
+
+.profile__signout:hover {
+  border-bottom-color: #ff4062;
+}
+
+@media screen and (max-width: 450px) {
+  .profile {
+    max-width: calc(100% - 40px);
+  }
+
+  .profile__input {
+    max-width: calc(100% - 19vw);
+  }
+}

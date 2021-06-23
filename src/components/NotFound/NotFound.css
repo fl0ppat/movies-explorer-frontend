@@ -1,0 +1,35 @@
+.notfound {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  height: 100vh;
+  position: relative;
+}
+
+.notfound__title {
+  font-size: 140px;
+  font-weight: 400;
+}
+
+.notfound__text {
+  height: 94px;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.notfound__link {
+  font-size: 14px;
+  text-decoration: none;
+  color: black;
+  position: absolute;
+  bottom: 115px;
+
+  border-bottom: 2px solid transparent;
+}
+
+.notfound__link:hover {
+  border-bottom: 2px solid black;
+}

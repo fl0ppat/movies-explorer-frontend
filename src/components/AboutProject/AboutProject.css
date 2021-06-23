@@ -1,0 +1,135 @@
+.about-project {
+  max-width: 1140px;
+  width: calc(100vw - 80px);
+  margin: 112px 0 100px;
+}
+
+.about-project__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 110px 30px;
+  grid-template-areas:
+    "left right"
+    "center center";
+  margin-top: 70px;
+}
+
+.about-project__item-left {
+  grid-area: left;
+}
+
+.about-project__item-right {
+  grid-area: right;
+}
+
+.about-project__item-center {
+  grid-area: center;
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 40px;
+  grid-gap: 10px 0px;
+  gap: 3px 0px;
+  grid-template-areas:
+    "back front front front front"
+    "back-tooltip front-tooltip front-tooltip front-tooltip front-tooltip";
+  margin-top: 5px;
+}
+
+.about-project__subtitle {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.about-project__paragraph {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-size: 14px;
+  margin-top: 26px;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+.about-project__item-center div {
+  padding: 10px 0;
+  height: fit-content;
+}
+
+.about-project__front-block {
+  grid-area: front;
+  background-color: #f2f2f2;
+}
+.about-project__front-tooltip {
+  grid-area: front-tooltip;
+  font-weight: 500;
+  color: #a0a0a0;
+}
+.about-project__back-block {
+  background-color: black;
+  color: white;
+  grid-area: back;
+}
+.about-project__back-tooltip {
+  grid-area: back-tooltip;
+  font-weight: 500;
+  color: #a0a0a0;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project {
+    margin-top: 92px;
+    margin-bottom: 34px;
+    width: calc(100vw - 100px);
+  }
+
+  .about-project__paragraph {
+    font-size: 12px;
+    margin-top: 21px;
+  }
+
+  .about-project__grid {
+    margin-top: 70px;
+    grid-gap: 82px 30px;
+    gap: 82px 30px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .about-project {
+    margin-top: 73px;
+    margin-bottom: 34px;
+    width: calc(100vw - 36px);
+  }
+
+  .about-project__grid {
+    grid-template-areas:
+      "left left"
+      "right right"
+      "center center";
+    margin-top: 60px;
+    grid-gap: 53px 30px;
+    gap: 53px 30px;
+  }
+
+  .about-project__subtitle {
+    letter-spacing: -1.9px;
+  }
+
+  .about-project__paragraph {
+    margin-top: 11px;
+    line-height: 17px;
+  }
+
+  .about-project__item-center div {
+    font-size: 11px;
+  }
+
+  .about-project__item-center {
+    grid-template-areas:
+      "back back front front front"
+      "back-tooltip back-tooltip front-tooltip front-tooltip front-tooltip";
+  }
+}
