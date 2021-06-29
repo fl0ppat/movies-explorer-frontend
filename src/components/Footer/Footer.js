@@ -3,7 +3,6 @@ import "./Footer.css";
 
 function Footer() {
   const curRoute = useLocation().pathname;
-  console.log(curRoute);
 
   if (curRoute === "/movies" || curRoute === "/saved-movies" || curRoute === "/") {
     return (
