@@ -1,13 +1,25 @@
+/* eslint-disable react/prop-types */
+
 import useWindowSize from "../../utils/useWindowWidth";
+
 import "./Search.css";
 
-function Search() {
+function Search(props) {
   const { width } = useWindowSize();
+
+  function searchSubmit(e) {
+    //console.log(e);
+
+    e.preventDefault();
+    const text = e.target.querySelector(".search__input").value;
+    const short = e.target.querySelector(".search__toggle").checked;
+    props.onSearch({ text, short });
+  }
 
   return (
     <div className='search__wrapper'>
-      <form className='search__line'>
-        <input className='search__input' placeholder='Фильм' type='text' />
+      <form className='search__line' onSubmit={searchSubmit}>
+        <input className='search__input' placeholder='Фильм' required type='text' />
         <input className='search__submit' type='submit' value=' ' />
 
         {width > 600 && (

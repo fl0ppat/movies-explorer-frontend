@@ -2,7 +2,9 @@
 import "./Movie.css";
 
 function Movie(props) {
-  const { cover, title, like, duration } = props.film;
+  const cover = "https://api.nomoreparties.co" + props.film.image.url;
+  const like = true;
+  const { nameRU, duration } = props.film;
 
   function calculateDuration(min) {
     const hours = Math.floor(min / 60);
@@ -12,8 +14,8 @@ function Movie(props) {
 
   return (
     <div className='movie'>
-      <img className='movie__cover' src={cover} alt={`Обложка ${title}`} />
-      <p className='movie__title'>{title}</p>
+      <img className='movie__cover' src={cover} alt={`Обложка ${nameRU}`} />
+      <p className='movie__title'>{nameRU}</p>
       {props.mode === "delete" ? (
         <button className='movie__button movie__button_delete' />
       ) : (
