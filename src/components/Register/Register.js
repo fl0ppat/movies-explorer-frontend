@@ -5,6 +5,7 @@ import logo from "../../images/logo.svg";
 import "../SignForm/SignForm.css";
 import handleInput from "../../utils/validator";
 import { ModalContext } from "../../context/modalContext";
+import Preloader from "../Preloader/Preloader";
 
 import auth from "../../utils/AuthApi";
 
@@ -25,6 +26,7 @@ function Register(props) {
 
   function register(e) {
     e.preventDefault();
+    handleModal(<Preloader />, false);
     if (e.target.checkValidity()) {
       auth
         .registerUser(password, email, name)

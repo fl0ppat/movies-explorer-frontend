@@ -6,6 +6,7 @@ import "../SignForm/SignForm.css";
 import handleInput from "../../utils/validator";
 import auth from "../../utils/AuthApi";
 import { ModalContext } from "../../context/modalContext";
+import Preloader from "../Preloader/Preloader";
 
 function Login(props) {
   const [email, setEmail] = useState("");
@@ -23,6 +24,7 @@ function Login(props) {
 
   function login(e) {
     if (e.target.checkValidity()) {
+      handleModal(<Preloader />, false);
       auth
         .loginUser(password, email)
         .then((res) => {
