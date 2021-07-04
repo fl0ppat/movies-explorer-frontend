@@ -1,21 +1,83 @@
-import { Link } from "react-router-dom";
-import SignForm from "../SignForm/SignForm";
+/* eslint-disable react/prop-types */
+import { useState, useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
+import logo from "../../images/logo.svg";
+import "../SignForm/SignForm.css";
+import handleInput from "../../utils/validator";
+import auth from "../../utils/AuthApi";
+import { ModalContext } from "../../context/modalContext";
 
-function Login() {
+function Login(props) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  let { handleModal } = useContext(ModalContext);
+  const history = useHistory();
+
+  function handleButtonDisabling(e) {
+    if (email.length > 0 && password.length > 0 && e.target.form.checkValidity()) {
+      e.target.form.querySelector(".signform__submit").disabled = false;
+    } else {
+      e.target.form.querySelector(".signform__submit").disabled = true;
+    }
+  }
+
+  function login(e) {
+    if (e.target.checkValidity()) {
+      auth
+        .loginUser(password, email)
+        .then((res) => {
+          props.onLogin(res.token);
+          history.push("/movies");
+        })
+        .catch(() => {
+          handleModal(<h2>Ошибка авторизации</h2>, true);
+        });
+    }
+  }
+
   return (
-    <SignForm
-      class='signin'
-      title='Рады видеть!'
-      submit='Войти'
-      fields={[
-        { name: "E-mail", placeholder: "Введите ", type: "email" },
-        { name: "Пароль", placeholder: "Введи", type: "password" },
-      ]}
-    >
+    <section className='signform'>
+      <Link to='/'>
+        <img src={logo} className='signform__logo' alt='Логотип' />
+      </Link>
+
+      <h1 className='signform__title'>Добро пожаловать</h1>
+      <form className='signup__form signform__form' onChange={handleButtonDisabling} onSubmit={login} noValidate>
+        <div className='signform__field'>
+          <label className='signform__label'>E-mail</label>
+          <input
+            size='396'
+            value={email}
+            onChange={(e) => handleInput(e, setEmail)}
+            className='signform__input'
+            type='email'
+            required
+            placeholder='Введите почту'
+          ></input>
+          <div className='signform__info'>Что-то пошло не так...</div>
+        </div>
+        <div className='signform__field'>
+          <label className='signform__label'>Пароль</label>
+          <input
+            size='396'
+            value={password}
+            onChange={(e) => handleInput(e, setPassword)}
+            className='signform__input'
+            type='password'
+            minLength='6'
+            maxLength='30'
+            required
+            placeholder='Введите пароль'
+          ></input>
+          <div className='signform__info'>Что-то пошло не так...</div>
+        </div>
+
+        <input className='signup__submit signform__submit' type='submit' disabled={true} value='Войти' />
+      </form>
       <Link className='signform__link' to='/signup'>
         Ещё не зарегистрированы? <span className='signform__link-accent'>Регистрация</span>
       </Link>
-    </SignForm>
+    </section>
   );
 }
 
