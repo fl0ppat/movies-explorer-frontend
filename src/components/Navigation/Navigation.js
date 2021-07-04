@@ -1,11 +1,10 @@
-import { useContext } from "react";
+/* eslint-disable react/prop-types */
 import { Link, useLocation } from "react-router-dom";
-import UserContext from "../../context/userContext";
 
 import "./Navigation.css";
 
-function Navigation() {
-  const user = useContext(UserContext);
+function Navigation(props) {
+  const user = props.loggedIn;
   const curRoute = useLocation().pathname;
   if (!user) return "";
 
