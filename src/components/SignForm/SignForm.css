@@ -48,7 +48,7 @@
 
 .signform__input_invalid {
   color: #ff4062;
-  border-color: #ff4062;
+  border-bottom-color: #ff4062 !important;
 }
 
 .signform__info {
@@ -69,6 +69,11 @@
   margin: 136px auto 0;
   display: block;
   transition: opacity 0.3s;
+}
+
+.signform__submit:disabled {
+  opacity: 0.7;
+  pointer-events: none;
 }
 
 .signform__link {

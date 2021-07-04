@@ -9,6 +9,7 @@
   place-items: center;
   margin-top: 72px;
   padding-bottom: 120px;
+  position: relative;
 }
 
 .movies-list__loadmore {
@@ -21,6 +22,10 @@
   margin: 50px auto;
   display: block;
   cursor: pointer;
+}
+
+.movies-list__notfound {
+  position: absolute;
 }
 
 @media screen and (max-width: 768px) {
