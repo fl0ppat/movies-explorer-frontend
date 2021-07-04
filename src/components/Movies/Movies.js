@@ -77,7 +77,6 @@ function Movies(props) {
     if (movies === null) {
       fetchAllFilms()
         .then((res) => {
-          console.log("here", res);
           localStorage.setItem("movies", JSON.stringify(res));
           setTimeout(closeModal, 300);
           return setMovies(filterFilm(res, searchParams));

@@ -8,7 +8,6 @@ export default () => {
   let handleModal = (content = false, closable) => {
     setModal(!modal);
     if (content) {
-      console.log(modal);
       setClosable(closable);
       setModalContent(content);
     }
