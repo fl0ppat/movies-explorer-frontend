@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import "../SignForm/SignForm.css";
 import handleInput from "../../utils/validator";
@@ -13,8 +13,8 @@ function Register(props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  let { handleModal } = useContext(ModalContext);
-  const history = useHistory();
+  let { handleModal, closeModal } = useContext(ModalContext);
+  //const history = useHistory();
 
   function handleButtonDisabling(e) {
     if (name.length > 0 && email.length > 0 && password.length > 0 && e.target.form.checkValidity()) {
@@ -32,11 +32,13 @@ function Register(props) {
         .registerUser(password, email, name)
         .then(() => {
           auth.loginUser(password, email).then((res) => {
-            props.onLogin(res.name, res.email);
-            history.push("/movies");
+            closeModal();
+            props.setCurrentUser(true);
+            props.onLogin(res.token);
           });
         })
-        .catch(() => {
+        .catch((e) => {
+          console.error(e);
           handleModal(<h2 className='modal__title'>Ошибка регистрации</h2>, true);
         });
     }

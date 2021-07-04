@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import "../SignForm/SignForm.css";
 import handleInput from "../../utils/validator";
@@ -11,8 +11,7 @@ import Preloader from "../Preloader/Preloader";
 function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  let { handleModal } = useContext(ModalContext);
-  const history = useHistory();
+  let { handleModal, closeModal } = useContext(ModalContext);
 
   function handleButtonDisabling(e) {
     if (email.length > 0 && password.length > 0 && e.target.form.checkValidity()) {
@@ -23,15 +22,18 @@ function Login(props) {
   }
 
   function login(e) {
+    e.preventDefault();
     if (e.target.checkValidity()) {
       handleModal(<Preloader />, false);
       auth
         .loginUser(password, email)
         .then((res) => {
+          closeModal();
+          props.setCurrentUser(true);
           props.onLogin(res.token);
-          history.push("/movies");
         })
-        .catch(() => {
+        .catch((e) => {
+          console.error(e);
           handleModal(<h2>Ошибка авторизации</h2>, true);
         });
     }
