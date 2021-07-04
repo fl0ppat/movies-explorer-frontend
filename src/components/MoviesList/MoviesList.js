@@ -14,7 +14,9 @@ function MoviesList(props, ref) {
   }));
 
   function createMoives(filmList) {
-    return filmList.map((film) => <Movie mode={props.mode} key={film.id} film={film} />);
+    return filmList.map((film) => (
+      <Movie mode={props.mode} onLike={props.onLike} onDislike={props.onDislike} key={film.id} film={film} />
+    ));
   }
 
   function addCardPack(size) {
@@ -34,10 +36,14 @@ function MoviesList(props, ref) {
     }
   }, [cardsOnScreen]);
 
+  function handleNotFound(filmList) {
+    return filmList.length > 0 ? filmList : <h2 className='movies-list__notfound'>Ничего не найдено</h2>;
+  }
+
   return (
     <>
-      <section className='movies-list'>{movies.length === 0 ? null : cardsToRender}</section>
-      {movies.length > cardsToRender.length && (
+      <section className='movies-list'>{handleNotFound(cardsToRender)}</section>
+      {cardsToRender.length > 0 && movies.length > cardsToRender.length && (
         <button className='movies-list__loadmore' onClick={() => addCardPack(cardsOnScreen.load)}>
           Ещё
         </button>
