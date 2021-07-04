@@ -11,6 +11,7 @@ npm install
 ```
 npm run build
 ```
+ИЛИ
 Запустить с hot reload
 ```
 npm run start
