@@ -7,13 +7,10 @@ class Api {
     this._baseURL = url;
   }
 
-  /**
-   *
-   *
-   * @param {Object} movie
-   * @return {*}
-   * @memberof Api
-   */
+  getLikedFilms() {
+    return this._sendRequest("GET", `${this._baseURL}/movies`).then((res) => this._handleResponseStatus(res));
+  }
+
   likeFilm(movie) {
     const { country, director, duration, year, description, image, trailer, nameRU, nameEN, thumbnail, movieId } =
       movie;

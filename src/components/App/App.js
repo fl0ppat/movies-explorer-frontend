@@ -56,7 +56,7 @@ function App() {
   }
 
   function likeFilm(id) {
-    if (!currentUser.movies.includes(id)) {
+    if (id && !currentUser.movies.includes(id)) {
       const newCurrentUser = currentUser;
       newCurrentUser.movies.push(id);
       setCurrentUser(newCurrentUser);
@@ -66,9 +66,8 @@ function App() {
   function dislikeFilm(id) {
     if (currentUser.movies.includes(id)) {
       const newCurrentUser = currentUser;
-      newCurrentUser.movies.filter((item) => item !== id);
+      newCurrentUser.movies = newCurrentUser.movies.filter((item) => item !== id);
       setCurrentUser(newCurrentUser);
-      return true;
     }
   }
 
@@ -88,8 +87,13 @@ function App() {
         <div className='App'>
           <Header loggedIn={loggedIn} />
           <Switch>
-            <ProtectedRoute path='/movies' loggedIn={loggedIn} component={Movies} onLike={likeFilm} />
-            <ProtectedRoute path='/saved-movies' loggedIn={loggedIn} component={Movies} onDislike={dislikeFilm} />
+            <ProtectedRoute
+              path={["/movies", "/saved-movies"]}
+              loggedIn={loggedIn}
+              component={Movies}
+              onLike={likeFilm}
+              onDislike={dislikeFilm}
+            />
             <Route path='/signup'>
               <Register onLogin={onLogin} setCurrentUser={setLoggedIn} />
             </Route>

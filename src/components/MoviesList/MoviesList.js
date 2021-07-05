@@ -15,7 +15,14 @@ function MoviesList(props, ref) {
 
   function createMoives(filmList) {
     return filmList.map((film) => (
-      <Movie mode={props.mode} onLike={props.onLike} onDislike={props.onDislike} key={film.id} film={film} />
+      <Movie
+        mode={props.deleteMode}
+        onLike={props.onLike}
+        onDislike={props.onDislike}
+        key={film.movieId}
+        film={film}
+        likedId={props}
+      />
     ));
   }
 
@@ -26,7 +33,11 @@ function MoviesList(props, ref) {
   }
 
   useEffect(() => {
-    addCardPack(cardsOnScreen.size);
+    if (props.deleteMode) {
+      addCardPack(movies.length);
+    } else {
+      addCardPack(cardsOnScreen.size);
+    }
   }, [props.movies]);
 
   useEffect(() => {

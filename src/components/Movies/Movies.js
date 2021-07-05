@@ -13,43 +13,51 @@ import currentUser from "../../context/userContext";
 
 function Movies(props) {
   const [movies, setMovies] = useState([]);
-  const user = useContext(currentUser);
+
   let { handleModal, closeModal } = useContext(ModalContext);
   const curRoute = useLocation().pathname;
 
   const MoviesRef = useRef();
   const screenWidth = useWindowSize();
+  const user = useContext(currentUser);
+
+  function parseRawMovieObj(movie) {
+    const { country = "Мир", director = "Режиссёр", duration = 1, year, description, image, nameRU, nameEN } = movie;
+    const preparedMovie = {
+      country,
+      director,
+      duration,
+      year,
+      description,
+      image: constants.imageLink + image.url,
+      trailer: movie.trailerLink,
+      nameRU,
+      nameEN,
+      thumbnail: constants.imageLink + image.url,
+      movieId: movie.id,
+    };
+    return preparedMovie;
+  }
 
   useEffect(() => {
     MoviesRef.current.cleanAllCards();
   }, [curRoute]);
 
   function onLike(movie) {
-    const { country, director, duration, year, description, image, nameRU, nameEN } = movie;
     mainApi
-      .likeFilm({
-        country,
-        director,
-        duration,
-        year,
-        description,
-        image: constants.imageLink + image.url,
-        trailer: movie.trailerLink,
-        nameRU,
-        nameEN,
-        thumbnail: constants.imageLink + image.url,
-        movieId: movie.id,
-      })
+      .likeFilm(movie)
       .then(() => {
-        props.onLike(movie.id);
+        props.onLike(movie.movieId);
       })
       .catch((e) => console.error(e));
   }
 
-  function onDislike(id) {
+  function onDislike(id, element) {
     mainApi
       .deleteFilm(id)
       .then(() => {
+        if (element) element.parentElement.style.display = "none";
+
         props.onDislike(id);
       })
       .catch((e) => console.error(e));
@@ -58,7 +66,7 @@ function Movies(props) {
   function getLikedMovies() {
     if (user === null) return [];
     const userMovies = user.movies;
-    const likedMovies = movies.filter((item) => userMovies.indexOf(item.id) > -1);
+    const likedMovies = movies.filter((item) => userMovies.indexOf(item.movieId) > -1);
     return likedMovies;
   }
 
@@ -69,17 +77,16 @@ function Movies(props) {
   }
 
   function onSearch(searchParams) {
-    handleModal(<Preloader />, false);
-
     MoviesRef.current.cleanAllCards();
     const movies = localStorage.getItem("movies");
-
     if (movies === null) {
+      handleModal(<Preloader />, false);
       fetchAllFilms()
         .then((res) => {
-          localStorage.setItem("movies", JSON.stringify(res));
+          const parsedMovies = res.map((movie) => parseRawMovieObj(movie));
+          localStorage.setItem("movies", JSON.stringify(parsedMovies));
           setTimeout(closeModal, 300);
-          return setMovies(filterFilm(res, searchParams));
+          return setMovies(filterFilm(parsedMovies, searchParams));
         })
         .catch((e) => {
           handleModal(<h2 className='modal__title'>Ошибка во время загрузки данных</h2>, true);
@@ -116,7 +123,7 @@ function Movies(props) {
       <MoviesList
         ref={MoviesRef}
         movies={curRoute === "/movies" ? movies : getLikedMovies()}
-        mode={curRoute === "/saved-movies"}
+        deleteMode={curRoute === "/saved-movies"}
         onLike={onLike}
         onDislike={onDislike}
         cardsOnScreen={getAmoutOfCards()}
