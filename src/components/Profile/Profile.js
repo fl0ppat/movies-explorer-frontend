@@ -24,15 +24,25 @@ function Profile(props) {
   }, [user]);
 
   function onFormChange(e) {
-    if (e.target.form.checkValidity() && (nameInput.value !== user.name || emailInput.value !== user.email)) {
+    if (
+      e.target.form.checkValidity() &&
+      nameInput.value.length > 0 &&
+      emailInput.value.length > 0 &&
+      (nameInput.value !== user.name || emailInput.value !== user.email)
+    ) {
       submitButton.style.visibility = "visible";
+    } else {
+      submitButton.style.visibility = "hidden";
     }
   }
 
   function changeUserData(e) {
     e.preventDefault();
     if (nameInput.value !== user.name || emailInput.value !== user.email) {
-      props.onChangeProfile(name, email).then(handleModal(<h2 className='modal__title'>Данные обновлены</h2>, true));
+      props
+        .onChangeProfile(name, email)
+        .then(handleModal(<h2 className='modal__title'>Данные обновлены</h2>, true))
+        .catch(handleModal(<h2 className='modal__title'>Ошибка обновления данных</h2>, true));
     }
   }
 
