@@ -28,6 +28,7 @@ function App() {
         .getUser()
         .then((data) => {
           setCurrentUser(data);
+          console.log("Установил юзера");
         })
         .catch((err) => console.error(err));
     }
@@ -77,6 +78,7 @@ function App() {
       .then(() => {
         setLoggedIn(null);
         window.localStorage.removeItem("token");
+        window.localStorage.removeItem("query");
         setCurrentUser(null);
       })
       .catch((err) => console.error(err));

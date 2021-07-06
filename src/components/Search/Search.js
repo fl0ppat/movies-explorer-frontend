@@ -12,7 +12,7 @@ function Search(props) {
 
   function searchSubmit(e, update) {
     if (update === undefined) e.preventDefault();
-    if (inputValue.length > 0) {
+    if (inputValue.length >= 0) {
       const short = searchDOM.querySelector(".search__toggle");
       props.onSearch({ text: inputValue, short: short.checked });
     }

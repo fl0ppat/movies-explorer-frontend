@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState, useContext, useRef, useEffect } from "react";
+import { useState, useContext, useRef, useEffect, useLayoutEffect } from "react";
 import { withRouter, useLocation } from "react-router";
 import Search from "../Search/Search";
 import MoviesList from "../MoviesList/MoviesList";
@@ -13,7 +13,6 @@ import currentUser from "../../context/userContext";
 
 function Movies(props) {
   const [movies, setMovies] = useState([]);
-
   let { handleModal, closeModal } = useContext(ModalContext);
   const curRoute = useLocation().pathname;
 
@@ -42,6 +41,13 @@ function Movies(props) {
   useEffect(() => {
     MoviesRef.current.cleanAllCards();
   }, [curRoute]);
+
+  useLayoutEffect(() => {
+    if (user) {
+      console.log(user);
+      onSearch();
+    }
+  }, [user]);
 
   function onLike(movie) {
     mainApi
@@ -76,7 +82,18 @@ function Movies(props) {
     else return { size: 5, load: 1 };
   }
 
-  function onSearch(searchParams) {
+  function onSearch(query) {
+    let searchParams = query;
+
+    if (searchParams === undefined) {
+      const storage = window.localStorage.getItem("query");
+      console.log(storage);
+      if (storage) searchParams = JSON.parse(storage);
+      console.log("загрузка карточек");
+    } else {
+      searchParams = query;
+    }
+
     MoviesRef.current.cleanAllCards();
     const movies = localStorage.getItem("movies");
     if (movies === null) {
@@ -94,7 +111,11 @@ function Movies(props) {
         });
     } else {
       setTimeout(closeModal, 300);
-      return setMovies(filterFilm(JSON.parse(movies), searchParams));
+      const currentMovies = filterFilm(JSON.parse(movies), searchParams);
+      if (query) window.localStorage.setItem("query", JSON.stringify(query));
+      console.log(currentMovies);
+
+      return setMovies(currentMovies);
     }
   }
 
@@ -107,6 +128,10 @@ function Movies(props) {
    * @param {Boolean} filterObj.short if true show only duration < 40
    */
   function filterFilm(filmList, filterObj) {
+    console.log(filterObj);
+    if (!filterObj) {
+      return [];
+    }
     let filtredArray;
     filtredArray = filmList.filter((film) => {
       return film.nameRU.toLowerCase().includes(filterObj.text.toLowerCase());
