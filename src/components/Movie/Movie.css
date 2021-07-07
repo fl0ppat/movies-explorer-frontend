@@ -21,7 +21,10 @@
   font-weight: 500;
   margin-top: 16px;
   margin-left: 16px;
-  max-width: 290px;
+  max-width: calc(100vw / 4.7);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .movie__button {
