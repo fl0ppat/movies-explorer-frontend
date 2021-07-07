@@ -41,8 +41,13 @@ function Profile(props) {
     if (nameInput.value !== user.name || emailInput.value !== user.email) {
       props
         .onChangeProfile(name, email)
-        .then(handleModal(<h2 className='modal__title'>Данные обновлены</h2>, true))
-        .catch(handleModal(<h2 className='modal__title'>Ошибка обновления данных</h2>, true));
+        .then(() => {
+          handleModal(<h2 className='modal__title'>Данные обновлены</h2>, true);
+        })
+        .catch((e) => {
+          console.error(e);
+          handleModal(<h2 className='modal__title'>Ошибка обновления данных</h2>, true);
+        });
     }
   }
 
