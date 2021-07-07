@@ -28,7 +28,6 @@ function App() {
         .getUser()
         .then((data) => {
           setCurrentUser(data);
-          console.log("Установил юзера");
         })
         .catch((err) => console.error(err));
     }
@@ -41,7 +40,6 @@ function App() {
       .then((data) => {
         setCurrentUser(data);
         setLoggedIn(token);
-        console.log("Установил юзера");
       })
       .then(history.push("/movies"))
       .catch((err) => console.error(err));

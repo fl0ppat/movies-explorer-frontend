@@ -44,7 +44,6 @@ function Movies(props) {
 
   useLayoutEffect(() => {
     if (user) {
-      console.log(user);
       onSearch();
     }
   }, [user]);
@@ -87,9 +86,7 @@ function Movies(props) {
 
     if (searchParams === undefined) {
       const storage = window.localStorage.getItem("query");
-      console.log(storage);
       if (storage) searchParams = JSON.parse(storage);
-      console.log("загрузка карточек");
     } else {
       searchParams = query;
     }
@@ -113,7 +110,6 @@ function Movies(props) {
       setTimeout(closeModal, 300);
       const currentMovies = filterFilm(JSON.parse(movies), searchParams);
       if (query) window.localStorage.setItem("query", JSON.stringify(query));
-      console.log(currentMovies);
 
       return setMovies(currentMovies);
     }
@@ -128,7 +124,6 @@ function Movies(props) {
    * @param {Boolean} filterObj.short if true show only duration < 40
    */
   function filterFilm(filmList, filterObj) {
-    console.log(filterObj);
     if (!filterObj) {
       return [];
     }
